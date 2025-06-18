@@ -124,34 +124,6 @@ function editStudent(index) {
     };
 }
 
-// Default Add handler
-function defaultSubmitHandler(e) {
-    e.preventDefault();
-
-    const newStudent = {
-        urn: form.urn.value,
-        name: form.name.value,
-        course: form.course.value,
-        percentage: form.percentage.value
-    };
-
-    fetch('/add-student', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newStudent)
-    })
-    .then(res => res.json())
-    .then(data => {
-        alert("Student added successfully!");
-        form.reset();
-        fetchStudents();
-    })
-    .catch(err => {
-        console.error("Error adding student:", err);
-        alert("Something went wrong!");
-    });
-}
-
 // Search Students
 searchInput.addEventListener('input', () => {
     const query = searchInput.value.toLowerCase();
