@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student DB</title>
+
+    <style>
+        body {
+            max-width: 100%;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        main {
+            width: 100%;
+            height: 100%;
+            color: #fff;
+            background-image: linear-gradient(180deg, rgba(81, 81, 81, 0.31), rgba(0, 0, 0, 0.9)), url('./Img/bg.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            align-items: center;
+        }
+
+        .student-form {
+            display: flex;
+            gap: 30px;
+            justify-content: space-between;
+            padding: 4.55%;
+        }
+
+        .studentForm {
+            display: flex;
+            flex-direction: column;
+            width: 37%;
+            height: 550px;
+            background-color: #f8e2a94d;
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .studentForm h2 {
+            text-align: center;
+            font-size: 1.8rem;
+        }
+
+        .studentForm label {
+            padding: 15px;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .studentForm label:hover {
+            text-decoration: 2px underline #0000004d;
+            text-underline-offset: 2px;
+            text-align: left;
+        }
+
+        .studentForm input {
+            width: 450px;
+            margin-left: 15px;
+            padding: 10px;
+            border-radius: 12px;
+            border: none;
+        }
+
+        .studentForm button {
+            padding: 10px;
+            border-radius: 12px;
+            border: none;
+            margin: 15px;
+            width: 100px;
+            margin-left: 40%;
+            cursor: pointer;
+            background-color: #fcf1d6;
+        }
+
+        .studentForm button:hover {
+            background-color: #fcf1d6d6;
+            color: #000;
+        }
+
+        .student-display {
+            flex-grow: 1;
+            background-color: #f8e2a94d;
+            padding: 20px;
+            border-radius: 12px;
+            overflow-x: auto;
+            width: 60%;
+            height: 550px;
+        }
+
+        .student-display input[type="text"] {
+            width: 97.5%;
+            padding: 10px;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        #studentTable {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        #studentTable th,
+        #studentTable td {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            text-align: center;
+        }
+
+        #studentTable th {
+            background-color: #fcf1d6;
+            color: #333;
+        }
+
+        .action-btn {
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .edit-btn {
+            cursor: pointer;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 5px;
+            width: 50px;
+        }
+
+        .delete-btn {
+            cursor: pointer;
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 5px;
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="student-form">
+            <!-- Student Form -->
+            <form action="/add-student" method="post" id="studentForm" class="studentForm">
+                <h2>Student Form</h2>
+
+                <label for="urn">Enter Your URN</label>
+                <input type="text" name="urn" id="urn" placeholder="URN" required>
+
+                <label for="name">Enter Your Name</label>
+                <input type="text" name="name" id="name" placeholder="NAME" required>
+
+                <label for="course">Enter Your Course</label>
+                <input type="text" name="course" id="course" placeholder="COURSE" required>
+
+                <label for="percentage">Enter Your Percentage</label>
+                <input type="text" name="percentage" id="percentage" placeholder="PERCENTAGE" required>
+
+                <button type="submit">Submit</button>
+            </form>
+
+            <!-- Student List -->
+            <div class="student-display">
+                <input type="text" id="searchInput" placeholder="Search by name or URN" />
+
+                <table id="studentTable">
+                    <thead>
+                        <tr>
+                            <th>URN</th>
+                            <th>Name</th>
+                            <th>Course</th>
+                            <th>Percentage</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Dynamic rows will be added here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
